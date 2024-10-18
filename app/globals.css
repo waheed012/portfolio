@@ -2,26 +2,51 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
 body {
-  color: var(--foreground);
-  background: var(--background);
   font-family: Arial, Helvetica, sans-serif;
 }
 
 @layer utilities {
   .text-balance {
     text-wrap: balance;
+  }
+}
+
+@layer base {
+  body {
+    @apply bg-primary text-white leading-loose;
+    @apply font-primary;
+  }
+  .h1 {
+    @apply text-[48px] xl:text-[60px] leading-[1.1] font-semibold;
+  }
+  .h2 {
+    @apply text-[36px] xl:text-[48px] leading-[1.1] font-semibold;
+  }
+  .h3 {
+    @apply text-[20px] xl:text-[24px] leading-[1.1] font-semibold;
+  }
+
+  .text-outline-hover {
+    -webkit-text-stroke: 1px #00ff99;
+  }
+
+  .text-outline {
+    -webkit-text-stroke: 1px #ffffff;
+  }
+  .icon-style {
+    @apply text-6xl transition-transform transform duration-500 ease-out;
+  }
+  .icon-style:hover {
+    @apply scale-110;
+    transform: translateY(-8px);
+  }
+  .icon-styles {
+    @apply text-6xl transition-transform transform duration-500 ease-in-out;
+    /* Ensures smooth flipping */
+  }
+
+  .icon-styles:hover {
+    transform: rotateX(180deg);
   }
 }
