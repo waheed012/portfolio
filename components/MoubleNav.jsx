@@ -57,6 +57,7 @@ const MoubleNav = () => {
               width={50} // Set the width of the image
               height={50} // Set the height of the image
               className="h-auto" // Adjust height as needed
+              onClick={handleLinkClick}
             />
             <span className="text-4xl font-semibold text-accent ">.</span>
           </Link>
