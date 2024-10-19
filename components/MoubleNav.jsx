@@ -5,6 +5,7 @@ import { useState } from "react"; // Import useState
 import { Sheet, SheetContent, SheetTrigger } from "./ui/sheet";
 import Link from "next/link";
 import { CiMenuFries } from "react-icons/ci";
+import Image from "next/image";
 
 const links = [
   {
@@ -48,11 +49,16 @@ const MoubleNav = () => {
         <CiMenuFries className="text-[32px] text-accent" />
       </SheetTrigger>
       <SheetContent>
-        <div className="mt-32 mb-40 text-center text-2xl">
-          <Link href="/">
-            <h1 className="text-4xl font-semibold ">
-              Abdul Waheed <span className="text-accent">.</span>
-            </h1>
+        <div className="mt-10 mb-20 text-center text-2xl">
+          <Link href="/" className=" flex ">
+            <Image
+              src="/assets/logo.png" // Replace with the path to your logo image
+              alt="Abdul Waheed Logo" // Descriptive alt text
+              width={50} // Set the width of the image
+              height={50} // Set the height of the image
+              className="h-auto" // Adjust height as needed
+            />
+            <span className="text-4xl font-semibold text-accent ">.</span>
           </Link>
         </div>
         <nav className="flex flex-col justify-center items-center gap-8">
