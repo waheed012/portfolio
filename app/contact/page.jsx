@@ -54,14 +54,14 @@ const Contact = () => {
   };
 
   const handleSubmit = (e) => {
-    e.preventDefault();
-    const { firstname, lastname, email, phone, service, message } = formData;
-
     if (!firstname || !lastname || !email || !phone || !service || !message) {
       toast.error("Please fill out all the fields."); // Show error toast
       // setShowMessage(true);
       return; // Stop form submission if any field is empty
     }
+    e.preventDefault();
+    const { firstname, lastname, email, phone, service, message } = formData;
+
     // EmailJS configuration
     emailjs
       .send(
