@@ -21,10 +21,8 @@ export default function RootLayout({ children }) {
       <body className={`${jetbrainsMono.variable} `}>
         <Header />
         <StairTransition />
-        <PageTransition>
-          <ToastContainer />
-          {children}
-        </PageTransition>
+        <ToastContainer />
+        <PageTransition>{children}</PageTransition>
       </body>
     </html>
   );
