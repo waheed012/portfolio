@@ -3,7 +3,7 @@ import "./globals.css";
 import Header from "../components/Header";
 import PageTransition from "../components/PageTransition";
 import StairTransition from "../components/StairTransition";
-
+import { ToastContainer } from "react-toastify";
 const jetbrainsMono = jetbrains_Mono({
   src: "./fonts/JetBrainsMono-Italic-VariableFont_wght.ttf",
   variable: "--font-jetbrainsMono",
@@ -21,8 +21,9 @@ export default function RootLayout({ children }) {
       <body className={`${jetbrainsMono.variable} `}>
         <Header />
         <StairTransition />
-        <PageTransition>{children} 
-        <ToastContainer/>
+        <PageTransition>
+          {children}
+          <ToastContainer />
         </PageTransition>
       </body>
     </html>
