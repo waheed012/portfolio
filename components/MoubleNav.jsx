@@ -49,7 +49,7 @@ const MoubleNav = () => {
         <CiMenuFries className="text-[32px] text-accent" />
       </SheetTrigger>
       <SheetContent>
-        <div className="mt-10 mb-20 text-center text-2xl">
+        <div className=" mb-20 text-center text-2xl">
           <Link href="/" className=" flex ">
             <Image
               src="/assets/logo.png" // Replace with the path to your logo image
