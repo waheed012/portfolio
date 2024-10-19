@@ -43,7 +43,7 @@ const Contact = () => {
     message: "",
   });
   const [showModal, setShowModal] = useState(false);
-  const [ShowMessage, setShowMessage] = useState(false); // State for modal visibility
+  // const [ShowMessage, setShowMessage] = useState(false); // State for modal visibility
 
   const handleInputChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -59,7 +59,7 @@ const Contact = () => {
 
     if (!firstname || !lastname || !email || !phone || !service || !message) {
       toast.error("Please fill out all the fields."); // Show error toast
-      setShowMessage(true);
+      // setShowMessage(true);
       return; // Stop form submission if any field is empty
     }
     // EmailJS configuration
@@ -183,11 +183,11 @@ const Contact = () => {
                 onChange={handleInputChange}
               />
 
-              {ShowMessage && (
+              {/* {ShowMessage && (
                 <p className="text-red-500 text-base  ">
                   Please fill out all the fields.
                 </p>
-              )}
+              )} */}
               <Button type="submit" size="lg" className="max-w-40">
                 Send message
               </Button>
