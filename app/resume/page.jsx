@@ -288,7 +288,9 @@ const resume = () => {
                       >
                         <span className="text-white/60">{item.fieldName}</span>
                         <span className="text-xl">:</span>
-                        <span className="text-xl">{item.fielValue}</span>
+                        <span className="text-xl break-all sm:break-normal">
+                          {item.fielValue}
+                        </span>
                       </li>
                     );
                   })}

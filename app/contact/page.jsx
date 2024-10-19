@@ -42,6 +42,8 @@ const Contact = () => {
     service: "",
     message: "",
   });
+  const [showModal, setShowModal] = useState(false);
+  const [ShowMessage, setShowMessage] = useState(false); // State for modal visibility
 
   const handleInputChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -57,6 +59,7 @@ const Contact = () => {
 
     if (!firstname || !lastname || !email || !phone || !service || !message) {
       toast.error("Please fill out all the fields."); // Show error toast
+      setShowMessage(true);
       return; // Stop form submission if any field is empty
     }
     // EmailJS configuration
@@ -71,7 +74,10 @@ const Contact = () => {
         (response) => {
           console.log("SUCCESS!", response.status, response.text);
           toast.success("Message sent successfully!"); // Show success toast
-
+          // Show the modal
+          setShowModal(true);
+          // Hide the modal after 3 seconds
+          setTimeout(() => setShowModal(false), 3000);
           // Clear the form fields after successful submission
           setFormData({
             firstname: "",
@@ -176,6 +182,12 @@ const Contact = () => {
                 placeholder="Type your message here."
                 onChange={handleInputChange}
               />
+
+              {ShowMessage && (
+                <p className="text-red-500 text-base  ">
+                  Please fill out all the fields.
+                </p>
+              )}
               <Button type="submit" size="lg" className="max-w-40">
                 Send message
               </Button>
@@ -190,7 +202,9 @@ const Contact = () => {
                   </div>
                   <div className="flex-1">
                     <p className="text-white/60">{item.title}</p>
-                    <h3 className="text-xl">{item.description}</h3>
+                    <h3 className="text-xl break-all sm:break-normal">
+                      {item.description}
+                    </h3>
                   </div>
                 </li>
               ))}
@@ -198,8 +212,29 @@ const Contact = () => {
           </div>
         </div>
       </div>
+
+      {showModal && (
+        <div className="fixed inset-0 flex items-center justify-center bg-gray-800 bg-opacity-10 z-50">
+          <div className="bg-[#27272c] p-6 rounded-md shadow-md text-center">
+            <h2 className="text-lg text-accent font-semibold">Thank You!</h2>
+            <p className="text-white/80">
+              We will respond to your query as soon as possible.
+            </p>
+          </div>
+        </div>
+      )}
       {/* Toast Container */}
-      <ToastContainer />
+      <ToastContainer
+        position="top-right"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+      />
     </motion.section>
   );
 };
