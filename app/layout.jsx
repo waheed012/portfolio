@@ -22,8 +22,8 @@ export default function RootLayout({ children }) {
         <Header />
         <StairTransition />
         <PageTransition>
-          {children}
           <ToastContainer />
+          {children}
         </PageTransition>
       </body>
     </html>
