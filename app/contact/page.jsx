@@ -75,6 +75,9 @@ const Contact = () => {
           console.log("SUCCESS!", response.status, response.text);
           toast.success("Message sent successfully!"); // Show success toast
           // Show the modal
+          setShowModal(true);
+          // Hide the modal after 3 seconds
+          setTimeout(() => setShowModal(false), 3000);
           setFormData({
             firstname: "",
             lastname: "",
@@ -83,9 +86,7 @@ const Contact = () => {
             service: "",
             message: "",
           });
-          setShowModal(true);
-          // Hide the modal after 3 seconds
-          setTimeout(() => setShowModal(false), 3000);
+
           // Clear the form fields after successful submission
         },
         (error) => {
