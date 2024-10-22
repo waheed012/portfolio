@@ -44,8 +44,7 @@ const MoubleNav = () => {
 
   return (
     <Sheet open={isOpen} onOpenChange={setIsOpen}>
-      {" "}
-      {/* Control open state */}
+     
       <SheetTrigger
         className="flex justify-center items-center"
         onClick={() => setIsOpen(true)}

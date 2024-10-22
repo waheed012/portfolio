@@ -1,13 +1,12 @@
 "use client";
+
 import { useState } from "react";
 import { Button } from "../../components/ui/button";
 import { Input } from "../../components/ui/input";
 import { Textarea } from "../../components/ui/textarea";
 import { toast, ToastContainer } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css"; // Import Toastify CSS
-
+import "react-toastify/dist/ReactToastify.css";
 import { motion } from "framer-motion";
-
 import { ScrollArea } from "../../components/ui/scroll-area";
 
 const Reviews = {
@@ -53,42 +52,39 @@ const Reviews = {
   ],
 };
 
-const review = () => {
-  // eslint-disable-next-line react-hooks/rules-of-hooks
+const Review = () => {
   const [formData, setFormData] = useState({
     firstname: "",
     email: "",
     message: "",
   });
-  // eslint-disable-next-line react-hooks/rules-of-hooks
   const [showModal, setShowModal] = useState(false);
-  // const [ShowMessage, setShowMessage] = useState(false); // State for modal visibility
 
   const handleInputChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleServiceChange = (value) => {
-    setFormData({ ...formData, service: value });
-  };
-
   const handleSubmit = (e) => {
     e.preventDefault();
     const { firstname, email, message } = formData;
+
     if (!firstname || !email || !message) {
-      toast.error("Please fill out all the fields."); // Show error toast
-      // setShowMessage(true);
-      return; // Stop form submission if any field is empty
+      toast.error("Please fill out all the fields.");
+      return;
     }
 
-    toast.success("Message sent successfully!");
+    toast.success("Message sent successfully", {
+      position: "top-right",
+      autoClose: 2300,
+    });
+
     setShowModal(true);
-    setTimeout(() => setShowModal(false), 3000);
     setFormData({
       firstname: "",
       email: "",
       message: "",
     });
+    setTimeout(() => setShowModal(false), 3000);
   };
 
   // const handleSubmit = (e) => {
@@ -139,21 +135,10 @@ const review = () => {
         opacity: 1,
         transition: { delay: 2.4, duration: 0.4, ease: "easeIn" },
       }}
-      className="py-6 "
+      className="py-6"
     >
-      <ToastContainer
-        position="top-right"
-        autoClose={2300}
-        hideProgressBar={false}
-        newestOnTop={false}
-        closeOnClick
-        rtl={false}
-        pauseOnFocusLoss
-        draggable
-        pauseOnHover
-      />
       <div className="container mx-auto">
-        <div className=" flex flex-col xl:flex-row gap-[30px]">
+        <div className="flex flex-col xl:flex-row gap-[30px]">
           <div className="xl:h-[50%] xl:w-[50%] order-2 xl:order-none">
             <form
               onSubmit={handleSubmit}
@@ -162,63 +147,59 @@ const review = () => {
               <h3 className="text-4xl text-accent">Share Your Experience</h3>
               <p className="text-white/60">
                 We truly appreciate you taking the time to share your thoughts
-                with us. Your feedback helps us improve our services and deliver
-                the best possible experience to our customers.
+                with us.
               </p>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <Input
                   type="text"
                   name="firstname"
+                  value={formData.firstname}
                   placeholder="Firstname"
                   onChange={handleInputChange}
                 />
-
                 <Input
                   type="email"
                   name="email"
+                  value={formData.email}
                   placeholder="Email address"
                   onChange={handleInputChange}
                 />
               </div>
-
               <Textarea
                 className="h-[200px]"
                 name="message"
+                value={formData.message}
                 placeholder="Type your Comments here."
                 onChange={handleInputChange}
               />
-
               <Button type="submit" size="lg" className="max-w-40">
                 Send message
               </Button>
             </form>
           </div>
-          <div className="flex-1 flex items-center  justify-center order-1 xl:order-none mb-8 xl:mb-0">
-            <div className="flex flex-col gap-[30px]  text-left">
-              <h3 className="text-4xl font-bold text-accent ">
+          {/* Reviews section */}
+          <div className="flex-1 flex items-center justify-center order-1 xl:order-none mb-8 xl:mb-0">
+            <div className="flex flex-col gap-[30px] text-left">
+              <h3 className="text-4xl font-bold text-accent">
                 {Reviews.title}
               </h3>
-
-              <ScrollArea className="h-[500px] ">
-                <ul className="grid grid-cols-1  md:w-[100%] gap-[30px]">
-                  {Reviews.item.map((item, index) => {
-                    return (
-                      <li
-                        key={index}
-                        className="bg-[#232329] h-[184px] py-6 px-10 rounded-xl flex 
-    flex-col justify-center items-start gap-1 w-full"
-                      >
-                        <div className="flex justify-between items-center">
-                          <h3 className="text-xl  ">{item.name}</h3>
-                          <span className="text-xl  ">{item.date}</span>
-                        </div>
-                        <div className="flex items-center gap-3">
-                          <span className="w-[6px] h-[6px] rounded-full bg-accent"></span>
-                          <p className="text-white/60">{item.comment}</p>
-                        </div>
-                      </li>
-                    );
-                  })}
+              <ScrollArea className="h-[450px]">
+                <ul className="grid grid-cols-1 w-full gap-[30px]">
+                  {Reviews.item.map((item, index) => (
+                    <li
+                      key={index}
+                      className="bg-[#232329] py-6 px-10 rounded-xl flex flex-col gap-1 w-full"
+                    >
+                      <div className="flex justify-between items-center">
+                        <h3 className="text-xl">{item.name}</h3>
+                        <span className="text-xl">{item.date}</span>
+                      </div>
+                      <div className="flex items-center gap-3">
+                        <span className="w-[6px] h-[6px] rounded-full bg-accent"></span>
+                        <p className="text-white/60">{item.comment}</p>
+                      </div>
+                    </li>
+                  ))}
                 </ul>
               </ScrollArea>
             </div>
@@ -239,4 +220,4 @@ const review = () => {
   );
 };
 
-export default review;
+export default Review;

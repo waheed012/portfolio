@@ -3,7 +3,7 @@ import { useState } from "react";
 import { Button } from "../../components/ui/button";
 import { Input } from "../../components/ui/input";
 import { Textarea } from "../../components/ui/textarea";
-import { toast, ToastContainer } from "react-toastify";
+import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css"; // Import Toastify CSS
 
 import {
@@ -104,17 +104,6 @@ const Contact = () => {
       }}
       className="py-6"
     >
-      <ToastContainer
-        position="top-right"
-        autoClose={2300}
-        hideProgressBar={false}
-        newestOnTop={false}
-        closeOnClick
-        rtl={false}
-        pauseOnFocusLoss
-        draggable
-        pauseOnHover
-      />
       <div className="container mx-auto">
         <div className=" flex flex-col xl:flex-row gap-[30px]">
           <div className="xl:h-[50%] order-2 xl:order-none">
@@ -132,24 +121,28 @@ const Contact = () => {
                 <Input
                   type="text"
                   name="firstname"
+                  value={formData.firstname}
                   placeholder="Firstname"
                   onChange={handleInputChange}
                 />
                 <Input
                   type="text"
                   name="lastname"
+                  value={formData.lastname}
                   placeholder="Lastname"
                   onChange={handleInputChange}
                 />
                 <Input
                   type="email"
                   name="email"
+                  value={formData.email}
                   placeholder="Email address"
                   onChange={handleInputChange}
                 />
                 <Input
                   type="phone"
                   name="phone"
+                  value={formData.phone}
                   placeholder="Phone Number"
                   onChange={handleInputChange}
                 />
@@ -190,6 +183,7 @@ const Contact = () => {
               <Textarea
                 className="h-[200px]"
                 name="message"
+                value={formData.message}
                 placeholder="Type your message here."
                 onChange={handleInputChange}
               />
