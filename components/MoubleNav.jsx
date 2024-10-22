@@ -25,6 +25,10 @@ const links = [
     path: "/Work",
   },
   {
+    name: "review",
+    path: "/Review",
+  },
+  {
     name: "contact",
     path: "/contact",
   },
