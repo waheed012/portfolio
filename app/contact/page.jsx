@@ -1,5 +1,5 @@
 "use client";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Button } from "../../components/ui/button";
 import { Input } from "../../components/ui/input";
 import { Textarea } from "../../components/ui/textarea";
@@ -106,7 +106,7 @@ const Contact = () => {
     >
       <ToastContainer
         position="top-right"
-        autoClose={3000}
+        autoClose={2300}
         hideProgressBar={false}
         newestOnTop={false}
         closeOnClick
@@ -225,7 +225,7 @@ const Contact = () => {
       </div>
 
       {showModal && (
-        <div className="fixed inset-0 flex items-center justify-center bg-gray-800 bg-opacity-10 z-50">
+        <div className="fixed inset-0 flex items-center justify-center bg-gray-800 bg-opacity-50 z-50">
           <div className="bg-[#27272c] p-6 rounded-md shadow-md text-center">
             <h2 className="text-lg text-accent font-semibold">Thank You!</h2>
             <p className="text-white/80">

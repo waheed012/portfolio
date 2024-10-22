@@ -26,7 +26,7 @@ const links = [
   },
   {
     name: "review",
-    path: "/Review",
+    path: "/review",
   },
   {
     name: "contact",
